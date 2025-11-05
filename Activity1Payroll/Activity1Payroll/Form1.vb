@@ -1,0 +1,85 @@
+﻿Public Class Form1
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btncompute.Click
+        Dim Admin, Personnel, Worker, Utility As Integer
+        Dim position, daywork, philhealth, sss, pagibig As Integer
+        Dim adans, perans, worans, utians As Double
+        Dim dead, deper, dewor, deuti As Double
+        Dim netad, netper, networ, netuti As Double
+
+        If (txtposition.Text = "Admin" Or txtposition.Text = "Personnel" Or txtposition.Text = "Worker" Or txtposition.Text = "Utility") Then
+        Else
+            MessageBox.Show("Position invalid")
+            Exit Sub
+        End If
+
+        If (txtname.Text = "" Or txtposition.Text = "" Or txtdaywork.Text = "" Or txtphil.Text = "" Or txtsss.Text = "" Or txtpagibig.Text = "") Then
+            MessageBox.Show("Please complete the details")
+            Exit Sub
+        End If
+
+        Form2.Show()
+        Me.Hide()
+        Form2.lblnamedisplay.Text = txtname.Text
+
+        position = Val(txtposition.Text)
+        daywork = Val(txtdaywork.Text)
+        philhealth = Val(txtphil.Text)
+        sss = Val(txtsss.Text)
+        pagibig = Val(txtpagibig.Text)
+
+        Form2.lblpositiondisplay.Text = txtposition.Text
+        Form2.lbldaysworkdisplay.Text = txtdaywork.Text
+        Form2.lblphildisplay.Text = txtphil.Text
+        Form2.lblsssdisplay.Text = txtsss.Text
+        Form2.lblpagibigdisplay.Text = txtpagibig.Text
+
+        If position = Admin Then
+            If txtposition.Text = "Admin" Then
+                Form2.lblrateperdaydisplay.Text = 1500
+                adans = 1500 * txtdaywork.Text
+                Form2.lblgrossdisplay.Text = adans
+                dead = 8 * adans / 100
+                Form2.lbltaxdisplay.Text = dead
+                Form2.lbltotaldeductdisplay.Text = dead
+                netad = adans - dead
+                Form2.lblnetpaydisplay.Text = netad
+            End If
+        End If
+        If position = Personnel Then
+            If txtposition.Text = "Personnel" Then
+                Form2.lblrateperdaydisplay.Text = 1000
+                perans = 1000 * txtdaywork.Text
+                Form2.lblgrossdisplay.Text = perans
+                deper = 8 * perans / 100
+                Form2.lbltaxdisplay.Text = deper
+                Form2.lbltotaldeductdisplay.Text = deper
+                netper = perans - deper
+                Form2.lblnetpaydisplay.Text = netper
+            End If
+        End If
+        If position = Worker Then
+            If txtposition.Text = "Worker" Then
+                Form2.lblrateperdaydisplay.Text = 750
+                worans = 750 * txtdaywork.Text
+                Form2.lblgrossdisplay.Text = worans
+                dewor = 8 * worans / 100
+                Form2.lbltaxdisplay.Text = dewor
+                Form2.lbltotaldeductdisplay.Text = dewor
+                networ = worans - dewor
+                Form2.lblnetpaydisplay.Text = networ
+            End If
+        End If
+        If position = Utility Then
+            If txtposition.Text = "Utility" Then
+                Form2.lblrateperdaydisplay.Text = 600
+                utians = 600 * txtdaywork.Text
+                Form2.lblgrossdisplay.Text = utians
+                deuti = 8 * utians / 100
+                Form2.lbltaxdisplay.Text = deuti
+                Form2.lbltotaldeductdisplay.Text = deuti
+                netuti = utians - deuti
+                Form2.lblnetpaydisplay.Text = netuti
+            End If
+        End If
+    End Sub
+End Class
